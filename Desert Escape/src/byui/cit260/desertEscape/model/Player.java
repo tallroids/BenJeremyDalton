@@ -16,7 +16,7 @@ public class Player implements Serializable{
     private double weight;
     private double height;
     private double percentComplete;
-    
+    private String inventory;
     
     public Player() {
     }
@@ -24,7 +24,7 @@ public class Player implements Serializable{
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
