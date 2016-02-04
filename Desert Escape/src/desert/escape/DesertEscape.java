@@ -1,6 +1,7 @@
 
 package desert.escape;
 
+import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Player;
 
 /**
@@ -19,6 +20,13 @@ public class DesertEscape {
         playerOne.setName("player");
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+        
+        Location locationOne = new Location();
+        locationOne.setDescription("desert");
+        locationOne.setColumn(1);
+        locationOne.setRow(1);
+        String locationInfo = locationOne.toString();
+        System.out.println(locationInfo);
     }
     
 }
