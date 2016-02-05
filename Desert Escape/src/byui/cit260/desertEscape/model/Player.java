@@ -13,6 +13,7 @@ import java.util.Objects;
 public class Player implements Serializable{
     
     private String name;
+    private int lives;
     private double weight;
     private double height;
     private double percentComplete;
@@ -25,6 +26,14 @@ public class Player implements Serializable{
         return name;
     }
 
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -56,21 +65,23 @@ public class Player implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.name);
+        hash = 43 * hash + this.lives;
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.weight) ^ (Double.doubleToLongBits(this.weight) >>> 32));
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.height) ^ (Double.doubleToLongBits(this.height) >>> 32));
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.percentComplete) ^ (Double.doubleToLongBits(this.percentComplete) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", weight=" + weight + ", height=" + height + ", percentComplete=" + percentComplete + '}';
+        return "Player{" + "name=" + name + ", lives=" + lives + ", weight=" + weight + ", height=" + height + ", percentComplete=" + percentComplete + '}';
     }
-    
-    
 
+    
+    
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -78,19 +89,25 @@ public class Player implements Serializable{
             return false;
         }
         final Player other = (Player) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (this.lives != other.lives) {
+            return false;
+        }
         if (Double.doubleToLongBits(this.weight) != Double.doubleToLongBits(other.weight)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.height) != Double.doubleToLongBits(other.height)) {
             return false;
         }
         if (Double.doubleToLongBits(this.percentComplete) != Double.doubleToLongBits(other.percentComplete)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
         return true;
     }
 
-    
+
     
     
     

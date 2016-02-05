@@ -18,11 +18,12 @@ public class DesertEscape {
         playerOne.setWeight(100);
         playerOne.setHeight(70);
         playerOne.setName("player");
+        playerOne.setLives(9);
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
         Location locationOne = new Location();
-        locationOne.setDescription("desert");
+        locationOne.setDescription("Desert");
         locationOne.setColumn(1);
         locationOne.setRow(1);
         String locationInfo = locationOne.toString();
