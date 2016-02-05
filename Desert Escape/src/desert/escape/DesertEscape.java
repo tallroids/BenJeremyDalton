@@ -3,8 +3,8 @@ package desert.escape;
 
 import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Player;
-
-/**
+import byui.cit260.desertEscape.model.Character;
+        /**
  *
  * @author Jeremy, Dalton, Ben
  */
@@ -27,6 +27,14 @@ public class DesertEscape {
         locationOne.setRow(1);
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo);
+        
+        Character characterOne = new Character();
+        characterOne.setName("Alien");
+        characterOne.setCharacterType("Enemy");
+        characterOne.setCharacterLocation("Alien Camp");
+        String characterInfo = characterOne.toString();
+        System.out.println(characterInfo);
+                
     }
     
 }
