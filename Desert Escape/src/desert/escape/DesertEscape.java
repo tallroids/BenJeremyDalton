@@ -35,7 +35,8 @@ public class DesertEscape {
         characterOne.setCharacterLocation("Alien Camp");
         String characterInfo = characterOne.toString();
         System.out.println(characterInfo);
-                
+       
+        
     }
     
 }
