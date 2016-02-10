@@ -2,6 +2,7 @@
 package desert.escape;
 
 import byui.cit260.desertEscape.model.Location;
+import byui.cit260.desertEscape.model.OutdoorTile;
 import byui.cit260.desertEscape.model.Player;
 
 /**
@@ -27,6 +28,11 @@ public class DesertEscape {
         locationOne.setRow(1);
         String locationInfo = locationOne.toString();
         System.out.println(locationInfo);
+        
+        OutdoorTile out = new OutdoorTile();
+        out.setClimate("desert");
+        String climateInfo = out.toString();
+        System.out.println(out);
     }
     
 }
