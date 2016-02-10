@@ -15,6 +15,7 @@ import java.util.Objects;
 public class Item implements Serializable{
     private String name;
     private String description;
+    private double itemPrice;
 
     public Item() {
     }
@@ -35,24 +36,32 @@ public class Item implements Serializable{
         this.description = description;
     }
 
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.name);
-        hash = 73 * hash + Objects.hashCode(this.description);
+        hash = 47 * hash + Objects.hashCode(this.name);
+        hash = 47 * hash + Objects.hashCode(this.description);
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.itemPrice) ^ (Double.doubleToLongBits(this.itemPrice) >>> 32));
         return hash;
     }
 
     @Override
     public String toString() {
-        return "Item{" + "name=" + name + ", description=" + description + '}';
+        return "Item{" + "name=" + name + ", description=" + description + ", itemPrice=" + itemPrice + '}';
     }
-
+    
+    
+    
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }
@@ -66,8 +75,13 @@ public class Item implements Serializable{
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (Double.doubleToLongBits(this.itemPrice) != Double.doubleToLongBits(other.itemPrice)) {
+            return false;
+        }
         return true;
     }
+
     
+   
     
 }
