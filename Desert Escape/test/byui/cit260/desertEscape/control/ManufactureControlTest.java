@@ -154,5 +154,49 @@ public class ManufactureControlTest {
         assertEquals(expResult, result, 0.0);
                 
     }
+
+    /**
+     * Test of calcShovelsFull method, of class ManufactureControl.
+     */
+    @Test
+    public void testCalcShovelsFull() {
+        System.out.println("calcShovelsFull");
+        System.out.println("Test case #1");
+        double shovelVolume = 20;
+        double pitVolume = 80;
+        ManufactureControl instance = new ManufactureControl();
+        double expResult = 4;
+        double result = instance.calcShovelsFull(shovelVolume, pitVolume);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("Test case #2");
+        shovelVolume = 20;
+        pitVolume = -80;
+        expResult = -1;
+        result = instance.calcShovelsFull(shovelVolume, pitVolume);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("Test case #3");
+        shovelVolume = -1;
+        pitVolume = 80;
+        expResult = -1;
+        result = instance.calcShovelsFull(shovelVolume, pitVolume);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("Test case #4");
+        shovelVolume = 0;
+        pitVolume = 0;
+        expResult = -1;
+        result = instance.calcShovelsFull(shovelVolume, pitVolume);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("Test case #5");
+        shovelVolume = 100;
+        pitVolume = 1000;
+        expResult = 10;
+        result = instance.calcShovelsFull(shovelVolume, pitVolume);
+        assertEquals(expResult, result, 0.0);
+                
+    }
     
 }
