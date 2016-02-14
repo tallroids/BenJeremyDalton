@@ -25,4 +25,17 @@ public class ManufactureControl {
 
         return shovelVolume;
        }
+    
+    public double calcShovelsFull ( double shovelVolume, double pitVolume){
+        if (shovelVolume <= 0 || shovelVolume > 1000) {
+            return -1;
+        }
+        if (pitVolume <= 0 || pitVolume > 1000) {
+            return -1;
+        }
+        
+        double shovelsFull = pitVolume / shovelVolume;
+        
+        return shovelsFull;
+    }
 }
