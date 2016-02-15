@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.desertEscape.control;
-
+import static java.lang.Math.*;
 /**
  *
  * @author tallroids
@@ -37,5 +37,18 @@ public class ManufactureControl {
         double shovelsFull = pitVolume / shovelVolume;
         
         return shovelsFull;
+    }
+    public double calcTreeHeight (double treeDistance, double treeAngle) {
+        if (treeDistance <= 0 || treeDistance > 5000) {
+            return -1;
+        }
+        if (treeAngle <= 0 || treeAngle >= 180) {
+            return -1;
+        }
+        
+        double treeHeight = (tan(treeAngle)) * treeDistance;
+        
+        return treeHeight;
+        
     }
 }
