@@ -1,7 +1,9 @@
 
 package desert.escape;
 
+import byui.cit260.desertEscape.model.Game;
 import byui.cit260.desertEscape.model.Player;
+import byui.cit260.desertEscape.view.StartProgramView;
 
 /**
  *
@@ -12,13 +14,30 @@ public class DesertEscape {
     /**
      * @param args the command line arguments
      */
+    private static Game currentGame = null;
+    private static Player player = null;
+    
     public static void main(String[] args) {
-        Player playerOne = new Player();
-        playerOne.setWeight(100);
-        playerOne.setHeight(70);
-        playerOne.setName("player");
-        String playerInfo = playerOne.toString();
-        System.out.println(playerInfo);
+        StartProgramView startprogramView = new StartProgramView();
+        startprogramView.displayStartProgramView();
     }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        DesertEscape.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        DesertEscape.player = player;
+    }
+
+    
     
 }
