@@ -198,5 +198,61 @@ public class ManufactureControlTest {
         assertEquals(expResult, result, 0.0);
                 
     }
+
+    /**
+     * Test of calcTreeHeight method, of class ManufactureControl.
+     */
+    @Test
+    public void testCalcTreeHeight() {
+        System.out.println("calcTreeHeight");
+        System.out.println("Test case #1");
+        double treeDistance = 2.0;
+        double treeAngle = 4.0;
+        ManufactureControl instance = new ManufactureControl();
+        double expResult = 2.3156425646991554;
+        double result = instance.calcTreeHeight(treeDistance, treeAngle);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calcTreeHeight");
+        System.out.println("Test case #2");
+        treeDistance = -2.0;
+        treeAngle = 4.0;
+        expResult = -1.0;
+        result = instance.calcTreeHeight(treeDistance, treeAngle);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calcTreeHeight");
+        System.out.println("Test case #3");
+        treeDistance = 45.0;
+        treeAngle = -2.0;
+        expResult = -1.0;
+        result = instance.calcTreeHeight(treeDistance, treeAngle);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calcTreeHeight");
+        System.out.println("Test case #4");
+        treeDistance = 1.0;
+        treeAngle = 0.0;
+        expResult = -1.0;
+        result = instance.calcTreeHeight(treeDistance, treeAngle);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calcTreeHeight");
+        System.out.println("Test case #5");
+        treeDistance = 0.0;
+        treeAngle = 1.0;
+        expResult = -1.0;
+        result = instance.calcTreeHeight(treeDistance, treeAngle);
+        assertEquals(expResult, result, 0.0);
+        
+        System.out.println("calcTreeHeight");
+        System.out.println("Test case #6");
+        treeDistance = 5000.0;
+        treeAngle = 179.0;
+        expResult = -354.4984817273124;
+        result = instance.calcTreeHeight(treeDistance, treeAngle);
+        assertEquals(expResult, result, 0.0);
+        
+    }
     
 }
