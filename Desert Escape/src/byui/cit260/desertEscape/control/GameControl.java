@@ -30,5 +30,13 @@ public class GameControl {
     public static void createNewGame(Player player) {
         System.out.println("createNewGame function called");
     }
+
+    public static void resumeGame(Player player) {
+        System.out.println("resumeGame function called");
+    }
+
+    public static void saveGame(Player player) {
+        System.out.println("saveGame function called");
+    }
     
 }

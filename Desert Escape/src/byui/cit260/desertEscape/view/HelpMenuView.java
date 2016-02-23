@@ -5,30 +5,26 @@
  */
 package byui.cit260.desertEscape.view;
 
-import byui.cit260.desertEscape.control.GameControl;
-import desert.escape.DesertEscape;
 import java.util.Scanner;
 
 /**
  *
- * @author Jeremy
+ * @author tallroids
  */
-public class MainMenuView {
+public class HelpMenuView {
     private String menu;
-
-    public MainMenuView() {
+    public HelpMenuView() {
         this.menu = "\n"
-                +"\n| Main Menu         |"
-                + "\n--------------------"
-                + "\nN - New Game"
-                + "\nG - Resume"
-                + "\nH - Help"
-                + "\nS - Save"
-                + "\nQ - Quit"
-                + "\n--------------------";
+                + "\n*** Help Menu***"
+                + "\nG - What is the goal of the game?"
+                + "\nC - What are the controls?"
+                + "\nP - How do I solve puzzles?"
+                + "\nQ - Quit";
     }
-    
-    public void displayMainMenuView() {
+
+    void displayMenu() {
+        
+        
         boolean done = false;
         do {
             String menuOption = this.getMenuOption();
@@ -37,8 +33,8 @@ public class MainMenuView {
             
             done = this.doAction(menuOption);
         } while (!done);
+    
     }
-
     private String getMenuOption() {
         Scanner keyboard = new Scanner(System.in); 
         String value = ""; //return value
@@ -58,56 +54,42 @@ public class MainMenuView {
         }
         return value;    
     }
-
     private boolean doAction(String choice) {
         choice = choice.toUpperCase();
         switch (choice) {
-            case "N":
-                this.startNewGame();
-                break;
             case "G":
-                this.startExistingGame();
+                this.gameGoal();
                 break;
-            case "S":
-                this.saveGame();
+            case "C":
+                this.gameControls();
                 break;
-            case "H":
-                this.displayHelpMenu();
+            case "P":
+                this.solvingPuzzles();
                 break;
             default:
                 System.out.println("\n*** Please try again ***");
                 break;
                 
         }
-        return false; //different than instructions!!! false repeats menu
-        
-    }
-
-    private void startNewGame() {
-        GameControl.createNewGame(DesertEscape.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-
-    private void startExistingGame() {
-        GameControl.resumeGame(DesertEscape.getPlayer());
-        
-        GameMenuView gameMenu = new GameMenuView(); //not sure what this should be
-        gameMenu.displayMenu();
+        return false;
+    
 }
 
-    private void saveGame() {
-        GameControl.saveGame(DesertEscape.getPlayer());
-        
-        SaveMenuView saveMenu = new SaveMenuView();
-        saveMenu.displayMenu();
+    private void gameGoal() {
+        System.out.println("\n"
+                + "\nDesert Escape is a game where you try to solve"
+                + "\npuzzles in order to escape the desert wasteland");
     }
 
-    private void displayHelpMenu() {
-      
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayMenu();
+    private void gameControls() {
+        System.out.println("\n"
+                + "\nFuture Description of Game Controls");    
+    }
+
+    private void solvingPuzzles() {
+        System.out.println("\n"
+                + "\nPuzzles are solved using math and wit. Look for clues"
+                + "\nwherever you go, and get ready to solve problems!");    
     }
 
     
