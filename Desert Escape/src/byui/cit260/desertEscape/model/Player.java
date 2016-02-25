@@ -15,6 +15,7 @@ public class Player implements Serializable{
     private String name;
     private double weight;
     private double height;
+    private double bmi;
     private double percentComplete;
     private String inventory;
     
@@ -44,6 +45,23 @@ public class Player implements Serializable{
     public void setHeight(double height) {
         this.height = height;
     }
+
+    public double getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(double bmi) {
+        this.bmi = bmi;
+    }
+
+    public String getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(String inventory) {
+        this.inventory = inventory;
+    }
+    
 
     public double getPercentComplete() {
         return percentComplete;
