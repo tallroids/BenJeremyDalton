@@ -38,5 +38,30 @@ public class GameControl {
     public static void saveGame(Player player) {
         System.out.println("saveGame function called");
     }
+
+    public static Player setPlayerWeight(Double weight) {
+        if(weight == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setWeight(weight);
+        
+        DesertEscape.setPlayer(player); // saves the player
+        
+        return player;    
+    }
+
+    public static Player setPlayerHeight(Double height) {
+        if(height == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setHeight(height);
+        
+        DesertEscape.setPlayer(player); // saves the player
+        
+        return player;    }
     
 }
