@@ -5,8 +5,8 @@
  */
 package byui.cit260.desertEscape.view;
 
-import byui.cit260.desertEscape.control.GameControl;
 import byui.cit260.desertEscape.model.Player;
+import desert.escape.DesertEscape;
 import java.util.Scanner;
 
 /**
@@ -22,7 +22,7 @@ class PrologueSceneView {
     private Double bmi;
     public PrologueSceneView() {
         this.prologue = "\n"
-                + "\n*** Welcome to Desert Escape," //+ player.getName() +"!***"
+                + "\n*** Welcome to Desert Escape, " + DesertEscape.getPlayer().getName()
                 + "\nTen years ago you would have never thought you would find"
                 + "\nyourslef here. Alone, confused, and not that you would admit,"
                 + "\nscared."
@@ -48,18 +48,18 @@ class PrologueSceneView {
     }
 
     void displayScene() {
-        
+        System.out.println(this.prologue);
         boolean done = false;
         do {
             String input = this.getWeight();
-            if (input.toUpperCase().equals('Q'))
+            if (input.toUpperCase().equals("Q"))
                 return;
             weight = Double.parseDouble(input);
             done = this.saveWeight(weight);
         } while (!done);
         do {
             String input = this.getHeight();
-            if (input.toUpperCase().equals('Q'))
+            if (input.toUpperCase().equals("Q"))
                 return;
             height = Double.parseDouble(input);
             done = this.saveHeight(height);
@@ -70,7 +70,7 @@ class PrologueSceneView {
         String value = ""; //return value
         boolean valid = false;
         
-        System.out.println(this.prologue);
+        
         while (!valid) { //loops until a valid input is entered
             System.out.println(this.promptWeight());
             
@@ -90,17 +90,9 @@ class PrologueSceneView {
             System.out.println("\nInvalid Weight: Let's be real!");
             return false;
         }
-        
-        Player player = GameControl.setPlayerWeight(weight);
-        
-        if (player == null) {
-            System.out.println("\nError updating weight");
-            return false;
-        }
-        //this.getHeight();
+        DesertEscape.getPlayer().setWeight(weight);
         return true;
 }
-    //bmi = 703*(weight/height);
 
     private String getHeight() {
     Scanner keyboard = new Scanner(System.in); 
@@ -127,15 +119,10 @@ class PrologueSceneView {
             return false;
         }
         
-        Player player = GameControl.setPlayerHeight(height);
-        
-        if (player == null) {
-            System.out.println("\nError updating height");
-            return false;
-        }
+        DesertEscape.getPlayer().setHeight(height);
         bmi = 730*(weight/Math.pow(height, 2));
-        player.setBmi(bmi);
-        this.displayNextView(player);
+        DesertEscape.getPlayer().setBmi(bmi);
+        this.displayNextView(DesertEscape.getPlayer());
         return true;
         
 }
