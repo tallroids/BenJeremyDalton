@@ -129,7 +129,7 @@ class PrologueSceneView {
 
     private void displayNextView(Player player) {
         System.out.println("\nLooks like the suit fits, " + player.getName() + "!"
-                + "\nYour BMI is"+bmi+"! Let's go outside...");
+                + "\nYour BMI is "+Math.round(bmi)+"! Let's go outside...");
         DesertSceneView desertSceneView = new DesertSceneView();
         
         desertSceneView.displayDesertSceneView();
