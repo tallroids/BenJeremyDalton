@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.control;
 
+import byui.cit260.desertEscape.model.Game;
 import byui.cit260.desertEscape.model.Player;
 import desert.escape.DesertEscape;
 
@@ -28,7 +29,9 @@ public class GameControl {
     }
 
     public static void createNewGame(Player player) {
-        System.out.println("createNewGame function called");
+        Game game = new Game();
+        game.setPlayer(player);
+        DesertEscape.setCurrentGame(game);
     }
 
     public static void resumeGame(Player player) {
