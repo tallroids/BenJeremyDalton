@@ -5,29 +5,28 @@
  */
 package byui.cit260.desertEscape.view;
 
-import byui.cit260.desertEscape.control.GameControl;
-import desert.escape.DesertEscape;
 import java.util.Scanner;
 
 /**
  *
- * @author tallroids
+ * @author daltonsolo
  */
-class GameMenuView {
-
-    
+public class InventoryView {
     private String menu;
-    public GameMenuView() {
-        this.menu = "\n"
-                + "\n*** Game Menu***"
-                + "\nC - Continue?"
-                + "\nI - Check Inventory"
-                + "\nS - View character stats?"
-                + "\nQ - Quit";
-    }
-
-    void displayMenu() {
+    
+    public InventoryView() {
         
+        this.menu = "\n"
+                + "\n*** Inventory Menu***"
+                + "\nC - View clothing"
+                + "\nW - View weapons"
+                + "\nF - View food"
+                + "\nI - View quest items"
+                + "\nQ - Quit";
+                
+    }
+    
+    void displayInventory() {
         
         boolean done = false;
         do {
@@ -37,8 +36,8 @@ class GameMenuView {
             
             done = this.doAction(menuOption);
         } while (!done);
-    
     }
+
     private String getMenuOption() {
         Scanner keyboard = new Scanner(System.in); 
         String value = ""; //return value
@@ -56,43 +55,54 @@ class GameMenuView {
             }
             break;
         }
-        return value;    
+        return value;
+    
+    
+    
     }
+
     private boolean doAction(String choice) {
-        choice = choice.toUpperCase();
+            choice = choice.toUpperCase();
         switch (choice) {
             case "C":
-                this.continueGame();
+                this.playerClothing();
                 break;
-            case "I":
-                this.checkInventory();
+            case "W":
+                this.playerWeapons();
                 break;
-            case "S":
-                this.characterStats();
+            case "F":
+                this.playerFood();
                 break;
+                case "I":
+                this.playerQuestItems();
+                break;
+             
             default:
                 System.out.println("\n*** Please try again ***");
                 break;
                 
         }
         return false;
-    
-}
-
-    private void continueGame() {
-        GameControl.resumeGame(DesertEscape.getPlayer());
-        PrologueSceneView prologueSceneView = new PrologueSceneView();
-        prologueSceneView.displayScene();
+     
     }
 
-    private void checkInventory() {
-      
-        InventoryView inventoryView = new InventoryView();
-        inventoryView.displayInventory();
-}
-
-    private void characterStats() {
-        System.out.println("characterStats function called");
-}
+    private void playerClothing() {
+        System.out.println("playerClothing function called");
+    
+    }
+    private void playerWeapons() {
+        System.out.println("playerWeapons function called");
+    
+    }
+    private void playerFood() {
+        System.out.println("playerFood function called");
+    
+    }
+    private void playerQuestItems() {
+        System.out.println("playerItems function called");
+    
+    }
+    
     
 }
+
