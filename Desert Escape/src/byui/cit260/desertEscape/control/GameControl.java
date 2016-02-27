@@ -66,5 +66,11 @@ public class GameControl {
         DesertEscape.setPlayer(player); // saves the player
         
         return player;    }
+
+    public static void checkInventory(Player player) {
+        System.out.println("checkInventory function called");
+    }
+
+    
     
 }
