@@ -13,11 +13,10 @@ import java.util.Scanner;
  *
  * @author Jeremy
  */
-public class MainMenuView {
-    private String menu;
-
+public class MainMenuView extends View {
+ //deleted menu variable
     public MainMenuView() {
-        this.menu = "\n"
+          super("\n"
                 +"\n| Main Menu         |"
                 + "\n--------------------"
                 + "\nN - New Game"
@@ -25,41 +24,15 @@ public class MainMenuView {
                 + "\nH - Help"
                 + "\nS - Save"
                 + "\nQ - Quit"
-                + "\n--------------------";
+                + "\n--------------------");
     }
     
-    public void displayMainMenuView() {
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
-    }
+   //deleted display function
 
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); 
-        String value = ""; //return value
-        boolean valid = false;
-        
-        while (!valid) { //loops until a valid input is entered
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim(); // trims blanks at ends after getting line entered
-            
-            if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: No menu item selected");
-                continue;
-            }
-            break;
-        }
-        return value;    
-    }
+//deleted getInput function
 
-    private boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String choice) {
         choice = choice.toUpperCase();
         switch (choice) {
             case "N":
