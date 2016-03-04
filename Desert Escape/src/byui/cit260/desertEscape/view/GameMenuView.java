@@ -62,7 +62,10 @@ class GameMenuView extends View {
 }
 
     private void characterStats() {
-        System.out.println("characterStats function called");
+        System.out.println(DesertEscape.getPlayer().toString());
+        CharacterStatsView characterStatsView = new CharacterStatsView();
+        characterStatsView.display();
+                
 }
     
 }

@@ -46,7 +46,7 @@ public abstract class View implements ViewInterface {
             value = value.trim(); // trims blanks at ends after getting line entered
             
             if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: No menu item selected");
+                System.out.println("\nInvalid value: Please try again");
                 continue;
             }
             break;

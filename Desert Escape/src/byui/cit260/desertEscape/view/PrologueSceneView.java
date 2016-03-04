@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.PlayerControl;
 import byui.cit260.desertEscape.model.Player;
 import desert.escape.DesertEscape;
 import java.util.Scanner;
@@ -17,9 +18,7 @@ class PrologueSceneView {
 
     private String prologue;
     private String view;
-    private Double weight;
-    private Double height;
-    private Double bmi;
+
     public PrologueSceneView() {
         this.prologue = "\n"
                 + "\n*** Welcome to Desert Escape, " + DesertEscape.getPlayer().getName()
@@ -54,14 +53,14 @@ class PrologueSceneView {
             String input = this.getWeight();
             if (input.toUpperCase().equals("Q"))
                 return;
-            weight = Double.parseDouble(input);
+            double weight = Double.parseDouble(input);
             done = this.saveWeight(weight);
         } while (!done);
         do {
             String input = this.getHeight();
             if (input.toUpperCase().equals("Q"))
                 return;
-            height = Double.parseDouble(input);
+            double height = Double.parseDouble(input);
             done = this.saveHeight(height);
         } while (!done);
 }
@@ -119,9 +118,7 @@ class PrologueSceneView {
             return false;
         }
         
-        DesertEscape.getPlayer().setHeight(height);
-        bmi = 730*(weight/Math.pow(height, 2));
-        DesertEscape.getPlayer().setBmi(bmi);
+        PlayerControl.setBmi(DesertEscape.getPlayer().getWeight(), height);
         this.displayNextView(DesertEscape.getPlayer());
         return true;
         
@@ -129,7 +126,7 @@ class PrologueSceneView {
 
     private void displayNextView(Player player) {
         System.out.println("\nLooks like the suit fits, " + player.getName() + "!"
-                + "\nYour BMI is "+Math.round(bmi)+"! Let's go outside...");
+                + "\nYour BMI is "+Math.round(player.getBmi())+"! Let's go outside...");
         DesertSceneView desertSceneView = new DesertSceneView();
         
         desertSceneView.displayDesertSceneView();
