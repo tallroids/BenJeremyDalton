@@ -106,7 +106,7 @@ class PrologueSceneView {
             value = value.trim(); // trims blanks at ends after getting line entered
             
             if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: Enter a valid weight");
+                System.out.println("\nInvalid value: Enter a valid height");
                 continue;
             }
             break;

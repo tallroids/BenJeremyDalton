@@ -31,7 +31,7 @@ public class InventoryView {
         boolean done = false;
         do {
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals('Q'))
+            if (menuOption.toUpperCase().equals("Q"))
                 return;
             
             done = this.doAction(menuOption);

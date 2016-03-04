@@ -13,8 +13,16 @@ import java.util.Objects;
  */
 public class Game implements Serializable {
     private double totalTime;
-
+    private Player player;
     public Game() {
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public double getTotalTime() {
