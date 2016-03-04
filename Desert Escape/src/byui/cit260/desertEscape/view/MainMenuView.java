@@ -60,14 +60,14 @@ public class MainMenuView extends View {
         GameControl.createNewGame(DesertEscape.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
         GameControl.resumeGame(DesertEscape.getPlayer());
         
         GameMenuView gameMenu = new GameMenuView(); //not sure what this should be
-        gameMenu.displayMenu();
+        gameMenu.display();
 }
 
     private void saveGame() {
@@ -80,7 +80,7 @@ public class MainMenuView extends View {
     private void displayHelpMenu() {
       
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayMenu();
+        helpMenuView.display();
     }
 
     

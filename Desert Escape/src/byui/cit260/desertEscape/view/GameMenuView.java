@@ -13,52 +13,22 @@ import java.util.Scanner;
  *
  * @author tallroids
  */
-class GameMenuView {
+class GameMenuView extends View {
 
     
-    private String menu;
+    
     public GameMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n*** Game Menu***"
                 + "\nC - Continue?"
                 + "\nI - Check Inventory"
                 + "\nS - View character stats?"
-                + "\nQ - Quit";
+                + "\nQ - Quit");
     }
 
-    void displayMenu() {
-        
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals('Q'))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
-    
-    }
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); 
-        String value = ""; //return value
-        boolean valid = false;
-        
-        while (!valid) { //loops until a valid input is entered
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim(); // trims blanks at ends after getting line entered
-            
-            if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: No menu item selected");
-                continue;
-            }
-            break;
-        }
-        return value;    
-    }
-    private boolean doAction(String choice) {
+
+    @Override
+    public boolean doAction(String choice) {
         choice = choice.toUpperCase();
         switch (choice) {
             case "C":
@@ -88,7 +58,7 @@ class GameMenuView {
     private void checkInventory() {
       
         InventoryView inventoryView = new InventoryView();
-        inventoryView.displayInventory();
+        inventoryView.display();
 }
 
     private void characterStats() {
