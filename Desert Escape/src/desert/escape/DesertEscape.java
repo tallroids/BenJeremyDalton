@@ -19,7 +19,7 @@ public class DesertEscape {
     
     public static void main(String[] args) {
         StartProgramView startprogramView = new StartProgramView();
-        startprogramView.displayStartProgramView();
+        startprogramView.display();
     }
 
     public static Game getCurrentGame() {

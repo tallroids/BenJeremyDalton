@@ -11,50 +11,19 @@ import java.util.Scanner;
  *
  * @author tallroids
  */
-public class HelpMenuView {
-    private String menu;
+public class HelpMenuView extends View {
+   
     public HelpMenuView() {
-        this.menu = "\n"
+        super("\n"
                 + "\n*** Help Menu***"
                 + "\nG - What is the goal of the game?"
                 + "\nC - What are the controls?"
                 + "\nP - How do I solve puzzles?"
-                + "\nQ - Quit";
+                + "\nQ - Quit");
     }
 
-    void displayMenu() {
-        
-        
-        boolean done = false;
-        do {
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q"))
-                return;
-            
-            done = this.doAction(menuOption);
-        } while (!done);
-    
-    }
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); 
-        String value = ""; //return value
-        boolean valid = false;
-        
-        while (!valid) { //loops until a valid input is entered
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine();
-            value = value.trim(); // trims blanks at ends after getting line entered
-            
-            if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: No menu item selected");
-                continue;
-            }
-            break;
-        }
-        return value;    
-    }
-    private boolean doAction(String choice) {
+    @Override
+    public boolean doAction(String choice) {
         choice = choice.toUpperCase();
         switch (choice) {
             case "G":
