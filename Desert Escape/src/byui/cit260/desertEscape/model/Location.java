@@ -6,6 +6,7 @@
 package byui.cit260.desertEscape.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -13,21 +14,13 @@ import java.util.Objects;
  * @author tallroids
  */
 public class Location implements Serializable{
-    // class instance variables
-    private String description;
     private double row;
     private double column;
+    private Boolean visited;
+    private Scene scene;
+    private ArrayList<Character> characters;
 
     public Location() {
-    }
-
-       
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public double getRow() {
@@ -46,17 +39,21 @@ public class Location implements Serializable{
         this.column = column;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
-        return hash;
+    public Boolean getVisited() {
+        return visited;
+    }
+
+    public void setVisited(Boolean visited) {
+        this.visited = visited;
     }
 
     @Override
-    public String toString() {
-        return "Location{" + "description=" + description + ", row=" + row + ", column=" + column + '}';
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.row) ^ (Double.doubleToLongBits(this.row) >>> 32));
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.column) ^ (Double.doubleToLongBits(this.column) >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.visited);
+        return hash;
     }
 
     @Override
@@ -77,12 +74,16 @@ public class Location implements Serializable{
         if (Double.doubleToLongBits(this.column) != Double.doubleToLongBits(other.column)) {
             return false;
         }
-        if (!Objects.equals(this.description, other.description)) {
+        if (!Objects.equals(this.visited, other.visited)) {
             return false;
         }
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + '}';
+    }
     
     
 }
