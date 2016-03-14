@@ -6,85 +6,39 @@
 package byui.cit260.desertEscape.model;
 
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 /**
  *
  * @author daltonsolo
  */
-public class Character implements Serializable {
+public enum Character implements Serializable {
+    
+    Alien("It is the enemy"),
+    Shopkeeper("He sells you what you will need to stay alive");
     
     //class instance variables
     
-    private String name;
-    private String characterType;
-    private String characterLocation;
+    private final String description;
+    private final Point characterLocation;
 
-
-public Character() {
+Character(String description) {
+    this.description = description;
+    characterLocation = new Point(1,1);
 }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCharacterType() {
-        return characterType;
-    }
-
-    public void setCharacterType(String characterType) {
-        this.characterType = characterType;
-    }
-
-    public String getCharacterLocation() {
+    public Point getCharacterLocation() {
         return characterLocation;
     }
-
-    public void setCharacterLocation(String characterLocation) {
-        this.characterLocation = characterLocation;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.name);
-        hash = 37 * hash + Objects.hashCode(this.characterType);
-        hash = 37 * hash + Objects.hashCode(this.characterLocation);
-        return hash;
+    
+    public String getDescription() {
+        return description;
     }
 
     @Override
     public String toString() {
-        return "Character{" + "name=" + name + ", characterType=" + characterType + ", characterLocation=" + characterLocation + '}';
+        return "Character{" + "description=" + description + ", characterLocation=" + characterLocation + '}';
     }
     
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Character other = (Character) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.characterType, other.characterType)) {
-            return false;
-        }
-        if (!Objects.equals(this.characterLocation, other.characterLocation)) {
-            return false;
-        }
-        return true;
-    }
-
-    
-
-
 }
