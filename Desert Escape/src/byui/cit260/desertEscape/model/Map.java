@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.model;
 
+import desert.escape.DesertEscape;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
@@ -125,10 +126,13 @@ public class Map implements Serializable{
         String rtn = "";
         for (int row = 0; row < noOfRows; row++) {
             for (int col = 0; col < noOfColumns; col++) {
-                rtn += locations[row][col].getScene().getDescrption().charAt(0) + "\t";
-        }
+                if (locations[row][col].getScene().getBlocked() == false) {
+                    rtn += locations[row][col].getScene().getDescrption().charAt(0) + "\t";
+                }else
+                rtn += "?";
+            }
             rtn += "\n";
-    }
+        }
         
         return rtn;
 
