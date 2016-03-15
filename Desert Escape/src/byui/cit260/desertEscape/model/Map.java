@@ -123,17 +123,17 @@ public class Map implements Serializable{
     }
 
     public String getMapString() {
-        String rtn = "";
+        String rtn = " *** Map ***\n";
         for (int row = 0; row < noOfRows; row++) {
             for (int col = 0; col < noOfColumns; col++) {
                 if (locations[row][col].getScene().getBlocked() == false) {
-                    rtn += locations[row][col].getScene().getDescrption().charAt(0) + "\t";
+                    rtn += "| " + locations[row][col].getScene().getDescrption().charAt(0)+ " ";
                 }else
                 rtn += "?";
             }
-            rtn += "\n";
+            rtn += "|\n";
         }
-        
+        rtn += " ***********";
         return rtn;
 
     }
