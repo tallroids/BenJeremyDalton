@@ -96,21 +96,27 @@ public class GameControl {
     }
 
     private static Item[] createInventoryList() {
-        Item[] inventory = new Item[5];
+        Item[] inventory = new Item[3];
         
         Item shovel = new Item();
-        shovel.setDescription("shovel");
+        shovel.setName("Shovel");
+        shovel.setDescription("Dig holes, fill holes");
         shovel.setItemPrice(0);
+        shovel.setAmountInInventory(0);
         inventory[InventoryItem.shovel.ordinal()] = shovel;
         
         Item timeMachineParts = new Item();
-        timeMachineParts.setDescription("Parts to build time machine");
+        timeMachineParts.setName("Parts");
+        timeMachineParts.setDescription("Use these to fix the time machine");
         timeMachineParts.setItemPrice(0);
+        timeMachineParts.setAmountInInventory(0);
         inventory[InventoryItem.timeMachineParts.ordinal()] = timeMachineParts;
         
         Item rayGun = new Item();
+        rayGun.setName("Ray Gun");
         rayGun.setDescription("Shoot aliens with this bad-boy");
         rayGun.setItemPrice(20);
+        rayGun.setAmountInInventory(0);
         inventory[InventoryItem.rayGun.ordinal()] = rayGun;
         
         return inventory;
@@ -129,11 +135,6 @@ public class GameControl {
         locations[2][1].setScene(scenes[SceneType.pit.ordinal()]);
         locations[2][2].setScene(scenes[SceneType.shop.ordinal()]);
 
-    }
-
-    public static Item[] getSortedInventoryList() {
-        
-        return null;
     }
 
     public static double calculatePercentComplete() {

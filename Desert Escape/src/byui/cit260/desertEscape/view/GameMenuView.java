@@ -16,8 +16,6 @@ import java.util.Scanner;
  */
 class GameMenuView extends View {
 
-    
-    
     public GameMenuView() {
         super("\n"
                 + "\n*** Game Menu***"
@@ -27,7 +25,6 @@ class GameMenuView extends View {
                 + "\nM - View Map"
                 + "\nQ - Quit");
     }
-
 
     @Override
     public boolean doAction(String choice) {
@@ -48,11 +45,11 @@ class GameMenuView extends View {
             default:
                 System.out.println("\n*** Please try again ***");
                 break;
-                
+
         }
         return false;
-    
-}
+
+    }
 
     private void continueGame() {
         GameControl.resumeGame(DesertEscape.getPlayer());
@@ -61,32 +58,34 @@ class GameMenuView extends View {
     }
 
     private void checkInventory() {
-      
+
         //InventoryView inventoryView = new InventoryView();
         //inventoryView.display();
-        Item[] inventory = GameControl.getSortedInventoryList();
-        
+        Item[] inventory = DesertEscape.getCurrentGame().getInventory();
+
         System.out.println("\n*** Inventory ***");
-        System.out.println("Name" + "\t" +
-                "Description" + "\t" +
-                "Price");
-        
-        for (Item item : inventory){
-            System.out.println(item.getName() + "\t  " +
-                    item.getDescription() + "\t  " +
-                    item.getItemPrice());
+        System.out.println("Name" + "\t  Price" + "\t  You have"+" Description");
+
+        for (int i = 0; i < inventory.length; i++) {
+            if (inventory[i].getName() != null) {
+                System.out.println(inventory[i].getName() + "\t  "
+                        + inventory[i].getItemPrice()+ "\t  "
+                        + inventory[i].getAmountInInventory()+ "\t   "
+                        + inventory[i].getDescription() );
+                        
+            }else
+                System.out.println("");
         }
- 
-}
+    }
 
     private void characterStats() {
         CharacterStatsView characterStatsView = new CharacterStatsView();
         characterStatsView.display();
-                
-}
+
+    }
 
     private void displayMap() {
         System.out.println(DesertEscape.getCurrentGame().getMap().getMapString());
     }
-    
+
 }

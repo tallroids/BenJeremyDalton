@@ -16,6 +16,7 @@ public class Item implements Serializable{
     private String name;
     private String description;
     private double itemPrice;
+    private int amountInInventory;
 
     public Item() {
     }
@@ -42,6 +43,14 @@ public class Item implements Serializable{
 
     public void setItemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
+    }
+
+    public int getAmountInInventory() {
+        return amountInInventory;
+    }
+
+    public void setAmountInInventory(int amountInInventory) {
+        this.amountInInventory = amountInInventory;
     }
 
     @Override
