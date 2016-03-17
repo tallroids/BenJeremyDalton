@@ -5,6 +5,9 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.GameControl;
+import byui.cit260.desertEscape.model.Location;
+import byui.cit260.desertEscape.model.Map;
 import desert.escape.DesertEscape;
 
 /**
@@ -19,6 +22,7 @@ class CharacterStatsView extends View{
                 + "\nH - View your height"
                 + "\nW - View your weight"
                 + "\nB - View your BMI"
+                + "\nP - Percent complete"
                 + "\nQ - Quit");
     }
     @Override
@@ -33,6 +37,9 @@ class CharacterStatsView extends View{
                 break;
             case "B":
                 this.displayBmi();
+                break;
+            case "P":
+                this.displayPercentComplete();
                 break;
             default:
                 System.out.println("\n*** Please try again ***");
@@ -53,6 +60,13 @@ class CharacterStatsView extends View{
 
     private void displayBmi() {
         System.out.println("Your BMI is:" + Math.round(DesertEscape.getPlayer().getBmi()));
+    }
+
+    private void displayPercentComplete() {
+        
+        byui.cit260.desertEscape.control.GameControl.calculatePercentComplete();
+        
+        System.out.println("You have completed "+ GameControl.calculatePercentComplete() +"% of the game");
     }
     
 }
