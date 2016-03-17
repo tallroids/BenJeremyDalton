@@ -33,52 +33,52 @@ public class MapControl {
         
         Scene prologueScene = new Scene();
         prologueScene.setDescrption("Prologue");
-        prologueScene.setBlocked(false);
+        prologueScene.setBlocked(true);
         scenes[SceneType.prologueScene.ordinal()] = prologueScene;
         
         Scene desert = new Scene();
         desert.setDescrption("Desert");
-        desert.setBlocked(false);
+        desert.setBlocked(true);
         scenes[SceneType.desert.ordinal()] = desert;
         
         Scene pyramid = new Scene();
         pyramid.setDescrption("Pyramid");
-        pyramid.setBlocked(false);
+        pyramid.setBlocked(true);
         scenes[SceneType.pyramid.ordinal()] = pyramid;
         
         Scene alienCamp = new Scene();
         alienCamp.setDescrption("Alien Camp");
-        alienCamp.setBlocked(false);
+        alienCamp.setBlocked(true);
         scenes[SceneType.alienCamp.ordinal()] = alienCamp;
         
         Scene caves = new Scene();
         caves.setDescrption("Caves");
-        caves.setBlocked(false);
+        caves.setBlocked(true);
         scenes[SceneType.caves.ordinal()] = caves;
         
         Scene mountains = new Scene();
         mountains.setDescrption("Mountains");
-        mountains.setBlocked(false);
+        mountains.setBlocked(true);
         scenes[SceneType.mountains.ordinal()] = mountains;
         
         Scene cliff = new Scene();
         cliff.setDescrption("Cliff");
-        cliff.setBlocked(false);
+        cliff.setBlocked(true);
         scenes[SceneType.cliff.ordinal()] = cliff;
         
         Scene shop = new Scene();
         shop.setDescrption("Shop");
-        shop.setBlocked(false);
+        shop.setBlocked(true);
         scenes[SceneType.shop.ordinal()] = shop;
         
         Scene pit = new Scene();
         pit.setDescrption("Pit");
-        pit.setBlocked(false);
+        pit.setBlocked(true);
         scenes[SceneType.pit.ordinal()] = pit;
         
         Scene crevass = new Scene();
         crevass.setDescrption("Crevass");
-        crevass.setBlocked(false);
+        crevass.setBlocked(true);
         scenes[SceneType.crevass.ordinal()] = crevass;
         
         return scenes;
