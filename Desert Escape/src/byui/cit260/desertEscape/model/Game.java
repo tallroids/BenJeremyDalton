@@ -14,6 +14,11 @@ import java.util.Objects;
 public class Game implements Serializable {
     private double totalTime;
     private Player player;
+    private TimeMachine timeMachine;
+    private Item[] inventory;
+    private String[] characters;
+    private Map map;
+    
     public Game() {
     }
 
@@ -31,6 +36,38 @@ public class Game implements Serializable {
 
     public void setTotalTime(double totalTime) {
         this.totalTime = totalTime;
+    }
+
+    public TimeMachine getTimeMachine() {
+        return timeMachine;
+    }
+
+    public void setTimeMachine(TimeMachine timeMachine) {
+        this.timeMachine = timeMachine;
+    }
+
+    public Item[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Item[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public String[] getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(String[] characters) {
+        this.characters = characters;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map location) {
+        this.map = location;
     }
 
     @Override
