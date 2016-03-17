@@ -6,7 +6,9 @@
 package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.PlayerControl;
+import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Player;
+import byui.cit260.desertEscape.model.SceneType;
 import desert.escape.DesertEscape;
 import java.util.Scanner;
 
@@ -129,6 +131,9 @@ class PrologueSceneView {
                 + "\nYour BMI is "+Math.round(player.getBmi())+"! Let's go outside...");
         DesertSceneView desertSceneView = new DesertSceneView();
         
+        Location[][] locations = DesertEscape.getCurrentGame().getMap().getLocations();
+        
+        locations[0][0].getScene().setBlocked(false);
         desertSceneView.displayDesertSceneView();
     }
 
