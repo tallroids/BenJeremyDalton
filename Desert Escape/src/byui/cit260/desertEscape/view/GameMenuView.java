@@ -62,7 +62,7 @@ class GameMenuView extends View {
         //InventoryView inventoryView = new InventoryView();
         //inventoryView.display();
         Item[] inventory = DesertEscape.getCurrentGame().getInventory();
-
+        
         System.out.println("\n*** Inventory ***");
         System.out.println("Name" + "\t  Price" + "\t  You have"+" Description");
 
@@ -76,6 +76,7 @@ class GameMenuView extends View {
             }else
                 System.out.println("");
         }
+        System.out.println(GameControl.calcSumPriceInventoryItems());
     }
 
     private void characterStats() {

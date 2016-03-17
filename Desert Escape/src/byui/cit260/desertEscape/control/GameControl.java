@@ -151,7 +151,24 @@ public class GameControl {
             
         }
         return rtn;
-    }
+        
+        }
+     public static double calcSumPriceInventoryItems() {
+         Item[] inventory = DesertEscape.getCurrentGame().getInventory();
+         double sum = 0.00;
+         
+         System.out.println("\nSum price of items:");         
+         for (Item item : inventory) {
+             if (item.getAmountInInventory() > 0) {
+             sum = sum + item.getItemPrice();                        
+         } else
+           sum = 0.00;
+                 
+     }
+     return sum;
+     
+     }        
+    
 
     
     
