@@ -18,9 +18,16 @@ public class DesertEscape {
     private static Player player = null;
     
     public static void main(String[] args) {
-        StartProgramView startprogramView = new StartProgramView();
-        startprogramView.display();
-    }
+        StartProgramView startProgramView = new StartProgramView();
+        
+        try {
+        startProgramView.display();
+        } catch (Throwable te) { 
+        System.out.println(te.getMessage());
+        te.printStackTrace();
+        startProgramView.display();
+        }
+        }
 
     public static Game getCurrentGame() {
         return currentGame;

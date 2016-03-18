@@ -5,7 +5,6 @@
  */
 package byui.cit260.desertEscape.control;
 
-import byui.cit260.desertEscape.control.MapControl;
 import byui.cit260.desertEscape.model.Game;
 import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.InventoryItem;
@@ -162,7 +161,7 @@ public class GameControl {
              if (item.getAmountInInventory() > 0) {
              sum = sum + item.getItemPrice();                        
          } else
-           sum = 0.00;
+           sum += 0.00;
                  
      }
      return sum;

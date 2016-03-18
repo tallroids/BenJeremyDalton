@@ -55,8 +55,10 @@ class PrologueSceneView {
             String input = this.getWeight();
             if (input.toUpperCase().equals("Q"))
                 return;
-            double weight = Double.parseDouble(input);
-            done = this.saveWeight(weight);
+            try {double weight = Double.parseDouble(input);
+            done = this.saveWeight(weight);}
+            catch (NumberFormatException nf) { System.out.println("\nYou must enter a valid number."
+                                                                    + " Try again or enter 'Q' to quit."); }
         } while (!done);
         do {
             String input = this.getHeight();

@@ -4,21 +4,23 @@
  * and open the template in the editor.
  */
 package byui.cit260.desertEscape.control;
+import byui.cit260.desertEscape.exeptions.ManufactureControlException;
 import static java.lang.Math.*;
 /**
  *
  * @author tallroids
  */
 public class ManufactureControl {
-    public double calcShovelVolume (double shovelLength, double shovelWidth, double shovelDepth){
+    public double calcShovelVolume (double shovelLength, double shovelWidth, double shovelDepth)
+      throws ManufactureControlException {
         if (shovelLength < 0 || shovelLength > 10) {
-            return -1;
+            throw new ManufactureControlException("Can not calculate volume, shovel length cannot be < 0 or > 10. Try again");
         } 
         if (shovelWidth < 0 || shovelWidth > 10) {
-            return -1;
+            throw new ManufactureControlException("Can not calculate volume, shovel width cannot be < 0 or > 10. Try again");
         } 
         if (shovelDepth < 0 || shovelDepth > 10) {
-            return -1;
+            throw new ManufactureControlException("Can not calculate volume, shovel depth cannot be < 0 or > 10. Try again");
         }
 
         double shovelVolume = shovelLength * shovelWidth * shovelDepth;
