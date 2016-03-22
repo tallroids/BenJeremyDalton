@@ -57,15 +57,17 @@ class PrologueSceneView {
                 return;
             try {double weight = Double.parseDouble(input);
             done = this.saveWeight(weight);}
-            catch (NumberFormatException nf) { System.out.println("\nYou must enter a valid number."
+            catch (NumberFormatException nf) { System.out.println("\nYou must enter a valid weight."
                                                                     + " Try again or enter 'Q' to quit."); }
         } while (!done);
         do {
             String input = this.getHeight();
             if (input.toUpperCase().equals("Q"))
                 return;
-            double height = Double.parseDouble(input);
-            done = this.saveHeight(height);
+            try {double height = Double.parseDouble(input);
+            done = this.saveHeight(height);}
+            catch (NumberFormatException nf) { System.out.println("\nYou must enter a valid height."
+                                                                    + " Try again or enter 'Q' to quit.");}
         } while (!done);
 }
     private String getWeight() {

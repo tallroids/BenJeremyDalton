@@ -5,6 +5,8 @@
  */
 package byui.cit260.desertEscape.control;
 
+import byui.cit260.desertEscape.exeptions.GameControlException;
+import byui.cit260.desertEscape.exeptions.MapControlExeption;
 import byui.cit260.desertEscape.model.Game;
 import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.InventoryItem;
@@ -25,9 +27,10 @@ import java.util.List;
  */
 public class GameControl {
 
-    public static Player createPlayer(String name) {
+    public static Player createPlayer(String name) 
+        throws GameControlException{
         if(name == null) {
-            return null;
+            throw new GameControlException("Player could not be created, please enter a valid name");
         }
         
         Player player = new Player();

@@ -6,8 +6,11 @@
 package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.GameControl;
+import byui.cit260.desertEscape.exeptions.GameControlException;
 import byui.cit260.desertEscape.model.Player;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,14 +33,14 @@ public class StartProgramView extends View {
             System.out.println("\nInvalid Name: The name must be longer than one character");
             return false;
         }
-        Player player = GameControl.createPlayer(playersName);
-        
-        if (player == null) { // unsuccessful creation of player
-            System.out.println("\nError creating the player.");
-            return false;
+        Player player;
+        try {
+            player = GameControl.createPlayer(playersName);
+            this.displayNextView(player);
+        } catch (GameControlException ex) {
+            System.out.println(ex.getMessage());
         }
-        this.displayNextView(player);
-        
+               
         return true;
     }
 

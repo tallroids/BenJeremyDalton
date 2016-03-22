@@ -129,7 +129,7 @@ public class Map implements Serializable{
                 if (locations[row][col].getScene().getBlocked() == false) {
                     rtn += "| " + locations[row][col].getScene().getDescrption().charAt(0)+ " ";
                 }else
-                rtn += "?";
+                rtn += "| ? ";
             }
             rtn += "|\n";
         }
