@@ -10,7 +10,12 @@ import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.SceneType;
 import desert.escape.DesertEscape;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +25,10 @@ class PrologueSceneView {
 
     private String prologue;
     private String view;
+    
+    protected final BufferedReader keyboard = DesertEscape.getInFile();
+    protected final PrintWriter console = DesertEscape.getOutFile();
+
 
     public PrologueSceneView() {
         this.prologue = "\n"
@@ -49,7 +58,7 @@ class PrologueSceneView {
     }
 
     void displayScene() {
-        System.out.println(this.prologue);
+        this.console.println(this.prologue);
         boolean done = false;
         do {
             String input = this.getWeight();
@@ -57,7 +66,7 @@ class PrologueSceneView {
                 return;
             try {double weight = Double.parseDouble(input);
             done = this.saveWeight(weight);}
-            catch (NumberFormatException nf) { System.out.println("\nYou must enter a valid weight."
+            catch (NumberFormatException nf) { ErrorView.display(this.getClass().getName(),"\nYou must enter a valid weight."
                                                                     + " Try again or enter 'Q' to quit."); }
         } while (!done);
         do {
@@ -66,24 +75,29 @@ class PrologueSceneView {
                 return;
             try {double height = Double.parseDouble(input);
             done = this.saveHeight(height);}
-            catch (NumberFormatException nf) { System.out.println("\nYou must enter a valid height."
+            catch (NumberFormatException nf) { ErrorView.display(this.getClass().getName(),"\nYou must enter a valid height."
                                                                     + " Try again or enter 'Q' to quit.");}
         } while (!done);
 }
     private String getWeight() {
-        Scanner keyboard = new Scanner(System.in); 
+        
         String value = ""; //return value
         boolean valid = false;
         
         
         while (!valid) { //loops until a valid input is entered
-            System.out.println(this.promptWeight());
+            this.console.println(this.promptWeight());
             
-            value = keyboard.nextLine();
-            value = value.trim(); // trims blanks at ends after getting line entered
+            try {
+                value = this.keyboard.readLine();
+                value = value.trim(); // trims blanks at ends after getting line entered
+            } catch (IOException ex) {
+                ErrorView.display(this.getClass().getName(),"error getting input");
+            }
+            
             
             if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: Enter a valid weight");
+                ErrorView.display(this.getClass().getName(),"\nInvalid value: Enter a valid weight");
                 continue;
             }
             break;
@@ -92,7 +106,7 @@ class PrologueSceneView {
     }
     private boolean saveWeight(Double weight) {
         if (weight<20 || weight>500) {
-            System.out.println("\nInvalid Weight: Let's be real!");
+            ErrorView.display(this.getClass().getName(),"\nInvalid Weight: Let's be real!");
             return false;
         }
         DesertEscape.getPlayer().setWeight(weight);
@@ -100,27 +114,30 @@ class PrologueSceneView {
 }
 
     private String getHeight() {
-    Scanner keyboard = new Scanner(System.in); 
         String value = ""; //return value
         boolean valid = false;
-        
+        try{
         while (!valid) { //loops until a valid input is entered
-            System.out.println(this.promptHeight());
+            this.console.println(this.promptHeight());
             
-            value = keyboard.nextLine();
+            value = this.keyboard.readLine();
             value = value.trim(); // trims blanks at ends after getting line entered
             
             if (value.length() < 1) { // blank input
-                System.out.println("\nInvalid value: Enter a valid height");
+                this.console.println("\nInvalid value: Enter a valid height");
                 continue;
             }
             break;
+        }
+        
+        } catch (Exception e){
+            this.console.println("Error reading height" + e.getMessage());
         }
         return value;
 }
     private boolean saveHeight(Double height) {
         if (height<30 || height>90) {
-            System.out.println("\nInvalid Height: Let's be real!");
+            ErrorView.display(this.getClass().getName(),"\nInvalid Height: Let's be real!");
             return false;
         }
         
@@ -131,7 +148,7 @@ class PrologueSceneView {
 }
 
     private void displayNextView(Player player) {
-        System.out.println("\nLooks like the suit fits, " + player.getName() + "!"
+        this.console.println("\nLooks like the suit fits, " + player.getName() + "!"
                 + "\nYour BMI is "+Math.round(player.getBmi())+"! Let's go outside...");
         DesertSceneView desertSceneView = new DesertSceneView();
         

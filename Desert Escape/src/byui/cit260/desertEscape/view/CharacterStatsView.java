@@ -42,7 +42,7 @@ class CharacterStatsView extends View{
                 this.displayPercentComplete();
                 break;
             default:
-                System.out.println("\n*** Please try again ***");
+                ErrorView.display(this.getClass().getName(), "\n*** Please try again ***");
                 break;
                 
         }
@@ -50,23 +50,23 @@ class CharacterStatsView extends View{
     }
 
     private void displayHeight() {
-        System.out.println("Your height is:" + DesertEscape.getPlayer().getHeight());
+        this.console.println("Your height is:" + DesertEscape.getPlayer().getHeight());
                 
     }
 
     private void displayWeight() {
-        System.out.println("Your weight is:" + DesertEscape.getPlayer().getWeight());
+        this.console.println("Your weight is:" + DesertEscape.getPlayer().getWeight());
     }
 
     private void displayBmi() {
-        System.out.println("Your BMI is:" + Math.round(DesertEscape.getPlayer().getBmi()));
+        this.console.println("Your BMI is:" + Math.round(DesertEscape.getPlayer().getBmi()));
     }
 
     private void displayPercentComplete() {
         
         byui.cit260.desertEscape.control.GameControl.calculatePercentComplete();
         
-        System.out.println("You have completed "+ GameControl.calculatePercentComplete() +"% of the game");
+        this.console.println("You have completed "+ GameControl.calculatePercentComplete() +"% of the game");
     }
     
 }

@@ -21,7 +21,7 @@ public class StartProgramView extends View {
     
     public StartProgramView() {
         super("\nWelcome to this game of escaping an alien desert!"
-             +"\n\nPlease enter your name: ");
+             +"\nPlease enter your name: ");
         
    
     }
@@ -30,7 +30,7 @@ public class StartProgramView extends View {
     @Override
     public boolean doAction(String playersName) {
         if(playersName.length() < 2) {
-            System.out.println("\nInvalid Name: The name must be longer than one character");
+            this.console.println("\nInvalid Name: The name must be longer than one character");
             return false;
         }
         Player player;
@@ -38,14 +38,14 @@ public class StartProgramView extends View {
             player = GameControl.createPlayer(playersName);
             this.displayNextView(player);
         } catch (GameControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(),"Could not create player" + ex.getMessage());
         }
                
         return true;
     }
 
     private void displayNextView(Player player) {
-        System.out.println("\n Welcome to the game " + player.getName()
+        this.console.println("\n Welcome to the game " + player.getName()
         + "\n We hope you have fun!");
         
         MainMenuView mainMenuView = new MainMenuView();

@@ -48,11 +48,11 @@ public class MainMenuView extends View {
                 this.displayHelpMenu();
                 break;
             default:
-                System.out.println("\n*** Please try again ***");
+                ErrorView.display(this.getClass().getName(),"\n*** Please try again ***");
                 break;
                 
         }
-        return false; //different than instructions!!! false repeats menu
+        return false; 
         
     }
 
@@ -64,17 +64,27 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        GameControl.resumeGame(DesertEscape.getPlayer());
+        console.println("Enter your game's name: ");
+        try{
+            String fileName = keyboard.readLine();
+            GameControl.resumeGame(fileName);
         
-        GameMenuView gameMenu = new GameMenuView(); //not sure what this should be
+        GameMenuView gameMenu = new GameMenuView(); 
         gameMenu.display();
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), "Error loading game");
+        }
 }
 
     private void saveGame() {
-        GameControl.saveGame(DesertEscape.getPlayer());
-        
-        SaveMenuView saveMenu = new SaveMenuView();
-        saveMenu.displayMenu();
+        console.println("Please name your game: ");
+        try{
+            String fileName = keyboard.readLine();
+            GameControl.saveGame(fileName);
+        }catch(Exception e){
+            ErrorView.display(this.getClass().getName(), "Error reading Game");
+        }
+      
     }
 
     private void displayHelpMenu() {

@@ -45,7 +45,7 @@ public class InventoryView extends View {
                 break;
              
             default:
-                System.out.println("\n*** Please try again ***");
+                this.console.println("\n*** Please try again ***");
                 break;
                 
         }
@@ -54,19 +54,19 @@ public class InventoryView extends View {
     }
 
     private void playerClothing() {
-        System.out.println("playerClothing function called");
+        this.console.println("playerClothing function called");
     
     }
     private void playerWeapons() {
-        System.out.println("playerWeapons function called");
+        this.console.println("playerWeapons function called");
     
     }
     private void playerFood() {
-        System.out.println("playerFood function called");
+        this.console.println("playerFood function called");
     
     }
     private void playerQuestItems() {
-        System.out.println("playerItems function called");
+        this.console.println("playerItems function called");
     
     }
     

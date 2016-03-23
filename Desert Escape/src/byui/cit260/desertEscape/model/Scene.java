@@ -5,13 +5,14 @@
  */
 package byui.cit260.desertEscape.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  *
  * @author tallroids
  */
-public class Scene {
+public class Scene implements Serializable{
     private String descrption;
     private Boolean blocked;
 

@@ -9,9 +9,15 @@ package byui.cit260.desertEscape.view;
  *
  * @author tallroids
  */
-class DesertSceneView {
+class DesertSceneView extends View{
 
     void displayDesertSceneView() {
-System.out.println("DesertSceneView called");    }
+this.console.println("DesertSceneView called");    }
+
+    @Override
+    
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

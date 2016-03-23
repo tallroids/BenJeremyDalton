@@ -9,10 +9,15 @@ package byui.cit260.desertEscape.view;
  *
  * @author tallroids
  */
-class SaveMenuView {
+class SaveMenuView extends View{
 
     void displayMenu() {
-        System.out.println("displayMenu in SaveMenuView function called");
+        this.console.println("displayMenu in SaveMenuView function called");
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

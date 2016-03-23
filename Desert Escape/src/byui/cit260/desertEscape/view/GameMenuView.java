@@ -43,7 +43,7 @@ class GameMenuView extends View {
                 this.displayMap();
                 break;
             default:
-                System.out.println("\n*** Please try again ***");
+                ErrorView.display(this.getClass().getName(),"\n*** Please try again ***");
                 break;
 
         }
@@ -52,7 +52,7 @@ class GameMenuView extends View {
     }
 
     private void continueGame() {
-        GameControl.resumeGame(DesertEscape.getPlayer());
+        GameControl.resumeGame("");
         PrologueSceneView prologueSceneView = new PrologueSceneView();
         prologueSceneView.displayScene();
     }
@@ -63,20 +63,20 @@ class GameMenuView extends View {
         //inventoryView.display();
         Item[] inventory = DesertEscape.getCurrentGame().getInventory();
         
-        System.out.println("\n*** Inventory ***");
-        System.out.println("Name" + "\t  Price" + "\t  You have"+" Description");
+        this.console.println("\n*** Inventory ***");
+        this.console.println("Name" + "\t  Price" + "\t  You have"+" Description");
 
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i].getName() != null) {
-                System.out.println(inventory[i].getName() + "\t  "
+                this.console.println(inventory[i].getName() + "\t  "
                         + inventory[i].getItemPrice()+ "\t  "
                         + inventory[i].getAmountInInventory()+ "\t   "
                         + inventory[i].getDescription() );
                         
             }else
-                System.out.println("");
+                this.console.println("");
         }
-        System.out.println(GameControl.calcSumPriceInventoryItems());
+        this.console.println(GameControl.calcSumPriceInventoryItems());
     }
 
     private void characterStats() {
@@ -86,7 +86,7 @@ class GameMenuView extends View {
     }
 
     private void displayMap() {
-        System.out.println(DesertEscape.getCurrentGame().getMap().getMapString());
+        this.console.println(DesertEscape.getCurrentGame().getMap().getMapString());
     }
 
 }

@@ -36,7 +36,7 @@ public class HelpMenuView extends View {
                 this.solvingPuzzles();
                 break;
             default:
-                System.out.println("\n*** Please try again ***");
+                this.console.println("\n*** Please try again ***");
                 break;
                 
         }
@@ -45,18 +45,18 @@ public class HelpMenuView extends View {
 }
 
     private void gameGoal() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nDesert Escape is a game where you try to solve"
                 + "\npuzzles in order to escape the desert wasteland");
     }
 
     private void gameControls() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nFuture Description of Game Controls");    
     }
 
     private void solvingPuzzles() {
-        System.out.println("\n"
+        this.console.println("\n"
                 + "\nPuzzles are solved using math and wit. Look for clues"
                 + "\nwherever you go, and get ready to solve problems!");    
     }
