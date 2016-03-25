@@ -6,9 +6,15 @@
 package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.GameControl;
+import byui.cit260.desertEscape.model.InventoryItem;
+import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Map;
 import desert.escape.DesertEscape;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  *
@@ -23,6 +29,7 @@ class CharacterStatsView extends View{
                 + "\nW - View your weight"
                 + "\nB - View your BMI"
                 + "\nP - Percent complete"
+                + "\nS - Print summary of Inventory to a text file"
                 + "\nQ - Quit");
     }
     @Override
@@ -40,6 +47,9 @@ class CharacterStatsView extends View{
                 break;
             case "P":
                 this.displayPercentComplete();
+                break;
+            case "S":
+                this.printInventory(DesertEscape.getCurrentGame().getInventory(), "inventory.txt");
                 break;
             default:
                 ErrorView.display(this.getClass().getName(), "\n*** Please try again ***");
@@ -67,6 +77,20 @@ class CharacterStatsView extends View{
         byui.cit260.desertEscape.control.GameControl.calculatePercentComplete();
         
         this.console.println("You have completed "+ GameControl.calculatePercentComplete() +"% of the game");
+    }
+
+    private void printInventory(Item[] inventory, String outputLocation) {        
+        try (PrintWriter out = new PrintWriter(outputLocation)){
+            out.println("\n\n     Inventory     ");
+            out.printf("%n%-16s%-9s%-9s%10s", "Item Name", "Price", "Owned", "Description");
+            out.printf("%n%-16s%-9s%-9s%10s", "*********", "*****", "*****", "***********");
+            
+            for (Item i : inventory) {
+                out.printf("%n%-16s%-9.2f%-9d%-40s", i.getName(), i.getItemPrice(), i.getAmountInInventory(), i.getDescription());
+            }
+        } catch (IOException e){
+            this.console.println("Error Saving names to file" + e.getMessage());
+        }
     }
     
 }
