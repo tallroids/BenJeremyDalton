@@ -1,9 +1,0 @@
-
-
-     Inventory     
-
-Item Name       Price    Owned    Description
-*********       *****    *****    ***********
-Shovel          0.00     0        Dig holes, fill holes                   
-Parts           0.00     0        Use these to fix the time machine       
-Ray Gun         20.00    0        Shoot aliens with this bad-boy          
