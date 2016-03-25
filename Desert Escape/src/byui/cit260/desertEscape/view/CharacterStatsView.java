@@ -15,6 +15,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,7 +51,7 @@ class CharacterStatsView extends View{
                 this.displayPercentComplete();
                 break;
             case "S":
-                this.printInventory(DesertEscape.getCurrentGame().getInventory(), "inventory.txt");
+                this.promptPrintInventory();
                 break;
             default:
                 ErrorView.display(this.getClass().getName(), "\n*** Please try again ***");
@@ -91,6 +93,20 @@ class CharacterStatsView extends View{
         } catch (IOException e){
             this.console.println("Error Saving names to file" + e.getMessage());
         }
+    }
+
+    private void promptPrintInventory() {
+        
+        this.console.println("Please enter the filepath for the document");
+        String outputLocation;
+        try {
+            outputLocation = keyboard.readLine();
+            printInventory(DesertEscape.getCurrentGame().getInventory(), outputLocation);
+        } catch (IOException e) {
+            this.console.println("Error Saving names to file" + e.getMessage());
+        }
+            
+    
     }
     
 }
