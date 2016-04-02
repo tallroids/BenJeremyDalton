@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.MapControl;
 import byui.cit260.desertEscape.control.PlayerControl;
 import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Player;
@@ -150,12 +151,12 @@ class PrologueSceneView {
     private void displayNextView(Player player) {
         this.console.println("\nLooks like the suit fits, " + player.getName() + "!"
                 + "\nYour BMI is "+Math.round(player.getBmi())+"! Let's go outside...");
-        DesertSceneView desertSceneView = new DesertSceneView();
         
-        Location[][] locations = DesertEscape.getCurrentGame().getMap().getLocations();
-        
-        locations[0][0].getScene().setBlocked(false);
-        desertSceneView.displayDesertSceneView();
+        MapControl.unblockLocation(DesertEscape.getPlayer().getCurrentLocation());
+        MapControl.moveToNextLocation(player);
+        GameMenuView nextView = new GameMenuView();
+        nextView.display();
+                
     }
 
 }

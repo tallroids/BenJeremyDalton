@@ -4,28 +4,31 @@
  * and open the template in the editor.
  */
 package byui.cit260.desertEscape.model;
+
 import java.io.Serializable;
 import java.util.Objects;
+
 /**
  *
  * @author Jeremy
  */
-public class Player implements Serializable{
-    
+public class Player implements Serializable {
+
     private String name;
     private double weight;
     private double height;
     private double bmi;
     private double percentComplete;
     private String inventory;
-    
+    private Location currentLocation;
+
     public Player() {
     }
-    
+
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -61,7 +64,6 @@ public class Player implements Serializable{
     public void setInventory(String inventory) {
         this.inventory = inventory;
     }
-    
 
     public double getPercentComplete() {
         return percentComplete;
@@ -69,6 +71,14 @@ public class Player implements Serializable{
 
     public void setPercentComplete(double percentComplete) {
         this.percentComplete = percentComplete;
+    }
+
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
     }
 
     @Override
@@ -81,8 +91,6 @@ public class Player implements Serializable{
     public String toString() {
         return "Player{" + "name=" + name + ", weight=" + weight + ", height=" + height + ", percentComplete=" + percentComplete + '}';
     }
-    
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -108,8 +116,4 @@ public class Player implements Serializable{
         return true;
     }
 
-    
-    
-    
-    
 }

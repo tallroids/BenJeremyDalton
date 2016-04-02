@@ -6,7 +6,9 @@
 package byui.cit260.desertEscape.control;
 
 import byui.cit260.desertEscape.model.Game;
+import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Map;
+import byui.cit260.desertEscape.model.Player;
 import byui.cit260.desertEscape.model.Scene;
 import byui.cit260.desertEscape.model.SceneType;
 import desert.escape.DesertEscape;
@@ -82,6 +84,31 @@ public class MapControl {
         scenes[SceneType.crevass.ordinal()] = crevass;
         
         return scenes;
+    }
+
+    public static void unblockLocation(Location currentLocation) {
+        currentLocation.getScene().setBlocked(false);
+        return;
+    }
+
+    public static void moveToNextLocation(Player player) {
+        Map map = DesertEscape.getCurrentGame().getMap();
+        
+        double oldCol = player.getCurrentLocation().getColumn();
+        double oldRow = player.getCurrentLocation().getRow();
+        int newCol = 0;
+        int newRow = 0;
+        
+        
+        if (oldCol < 2){
+            newCol = (int) (oldCol + 1);
+            newRow = (int) oldRow;
+        } else{
+            newCol = 0;
+            newRow = (int) (oldRow + 1);
+        }
+        Location[][] newLocation = map.getLocations();
+        player.setCurrentLocation(newLocation[newRow][newCol]);
     }
     
 }

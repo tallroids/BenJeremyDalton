@@ -9,9 +9,9 @@ package byui.cit260.desertEscape.view;
  *
  * @author tallroids
  */
-class DesertSceneView extends View{
+class CavesSceneView extends View{
 
-    public DesertSceneView() {
+    public CavesSceneView() {
         super("\n"
                 + "\n*** This view not yet developed ***"
                 
@@ -23,7 +23,9 @@ class DesertSceneView extends View{
         this.console.println("This scene is not created yet, sorry");
         choice = choice.toUpperCase();
         switch (choice) {
-                
+            case "H":
+                this.console.println("say hello");
+                return true;
             default:
                 ErrorView.display(this.getClass().getName(),"\n*** Please try again ***");
                 break;

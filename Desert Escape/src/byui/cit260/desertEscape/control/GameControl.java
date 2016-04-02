@@ -55,7 +55,7 @@ public class GameControl {
 
         game.setPlayer(player);
         game.getPlayer().setPercentComplete(0.0);
-
+        
         Item[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
 
@@ -64,7 +64,9 @@ public class GameControl {
 
         Map map = MapControl.createMap();
         game.setMap(map);
-
+        
+        game.getPlayer().setCurrentLocation(map.getCurrentLocation(0,0));
+        
         DesertEscape.setCurrentGame(game);
 
     }

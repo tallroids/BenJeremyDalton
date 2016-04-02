@@ -9,9 +9,9 @@ package byui.cit260.desertEscape.view;
  *
  * @author tallroids
  */
-class DesertSceneView extends View{
+class CliffSceneView extends View{
 
-    public DesertSceneView() {
+    public CliffSceneView() {
         super("\n"
                 + "\n*** This view not yet developed ***"
                 
@@ -20,7 +20,7 @@ class DesertSceneView extends View{
 
     @Override
     public boolean doAction(String choice) {
-        this.console.println("This scene is not created yet, sorry");
+     this.console.println("This scene is not created yet, sorry");
         choice = choice.toUpperCase();
         switch (choice) {
                 
@@ -29,6 +29,6 @@ class DesertSceneView extends View{
                 break;
     }
     return false;
-}
     
+}
 }

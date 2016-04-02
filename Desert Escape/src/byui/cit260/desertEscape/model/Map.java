@@ -124,19 +124,22 @@ public class Map implements Serializable{
     }
 
     public String getMapString() {
-        String rtn = " *** Map ***\n";
+        String rtn = " ***** Map ****\n";
         for (int row = 0; row < noOfRows; row++) {
             for (int col = 0; col < noOfColumns; col++) {
                 if (locations[row][col].getScene().getBlocked() == false) {
-                    rtn += "| " + locations[row][col].getScene().getDescrption().charAt(0)+ " ";
+                    rtn += "| " + locations[row][col].getScene().getDescrption().charAt(0)
+                                + locations[row][col].getScene().getDescrption().charAt(1) + " ";
                 }else
-                rtn += "| ? ";
+                rtn += "| ?? ";
             }
             rtn += "|\n";
         }
-        rtn += " ***********";
+        rtn += " **************";
         return rtn;
 
     }
-    
+    public Location getCurrentLocation(int row, int col){
+        return locations[row][col];
+    }
 }

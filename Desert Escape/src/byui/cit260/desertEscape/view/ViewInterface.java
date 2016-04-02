@@ -5,6 +5,8 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.model.Player;
+
 /**
  *
  * @author daltonsolo
@@ -13,4 +15,5 @@ public interface ViewInterface {
     public void display();
     public String getInput();
     public boolean doAction(String value);
+    public void unblockAndDisplayMenu(Player player);
 }

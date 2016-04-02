@@ -6,7 +6,9 @@
 package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.GameControl;
+import byui.cit260.desertEscape.control.MapControl;
 import byui.cit260.desertEscape.model.Item;
+import byui.cit260.desertEscape.model.Scene;
 import desert.escape.DesertEscape;
 import java.util.Scanner;
 
@@ -51,10 +53,48 @@ class GameMenuView extends View {
 
     }
 
-    private void continueGame() {
-        GameControl.resumeGame("");
-        PrologueSceneView prologueSceneView = new PrologueSceneView();
-        prologueSceneView.displayScene();
+    private boolean continueGame() {
+        String loc = DesertEscape.getCurrentGame().getPlayer().getCurrentLocation().getScene().getDescrption();
+        this.console.println(loc);
+        switch (loc) {
+            case "Prologue":
+                PrologueSceneView prologue = new PrologueSceneView();
+                prologue.displayScene();
+                break;
+            case "Alien Camp":
+                AlienCampSceneView camp = new AlienCampSceneView();
+                camp.display();
+                break;
+            case "Caves":
+                CavesSceneView caves = new CavesSceneView();
+                caves.display();
+                break;
+            case "Cliff":
+                CliffSceneView cliff = new CliffSceneView();
+                cliff.display();
+                break;
+            case "Crevass":
+                CrevassSceneView crevass = new CrevassSceneView();
+                crevass.display();
+                break;
+            case "Desert":
+                DesertSceneView desert = new DesertSceneView();
+                desert.display();
+                break;
+            case "Mountains":
+                MountainsSceneView mountains = new MountainsSceneView();
+                mountains.display();
+                break;
+            case "Pit":
+                PitSceneView pit = new PitSceneView();
+                pit.display();
+                break;
+            case "Shop":
+                ShopSceneView shop = new ShopSceneView();
+                shop.display();
+                break;
+        }
+        return false;
     }
 
     private void checkInventory() {

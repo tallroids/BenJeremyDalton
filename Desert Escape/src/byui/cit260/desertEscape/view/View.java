@@ -5,6 +5,8 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.MapControl;
+import byui.cit260.desertEscape.model.Player;
 import desert.escape.DesertEscape;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -63,6 +65,15 @@ public abstract class View implements ViewInterface {
         }
 
         return value;
+    }
+    
+    @Override
+    public void unblockAndDisplayMenu(Player player) {
+        this.console.println("displayGameMenu called");
+        MapControl.unblockLocation(player.getCurrentLocation());
+        MapControl.moveToNextLocation(player);
+        GameMenuView nextView = new GameMenuView();
+        nextView.display();
     }
 
 }

@@ -5,30 +5,39 @@
  */
 package byui.cit260.desertEscape.view;
 
+import desert.escape.DesertEscape;
+
 /**
  *
  * @author tallroids
  */
-class DesertSceneView extends View{
+class AlienCampSceneView extends View{
 
-    public DesertSceneView() {
+    public AlienCampSceneView() {
         super("\n"
-                + "\n*** This view not yet developed ***"
-                
+                + "\n*** Alien Camp ***"
+                + "\nYou wandered into a camp of aliens, what will you do?"
+                + "\n\nR - Run!"
+                + "\nH - Say Hello"
                 + "\nQ - Game Menu");
     }
 
     @Override
     public boolean doAction(String choice) {
-        this.console.println("This scene is not created yet, sorry");
         choice = choice.toUpperCase();
         switch (choice) {
-                
+            case "R":
+                this.console.println("Good choice, you would probably regret that");
+                this.unblockAndDisplayMenu(DesertEscape.getPlayer());
+                break;
+            case "H":
+                this.console.println("Bad choice, you died");
+                break;
+         
             default:
                 ErrorView.display(this.getClass().getName(),"\n*** Please try again ***");
                 break;
     }
     return false;
 }
-    
 }

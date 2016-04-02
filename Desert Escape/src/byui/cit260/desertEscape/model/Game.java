@@ -19,6 +19,7 @@ public class Game implements Serializable {
     private String[] characters;
     private Map map;
     
+    
     public Game() {
     }
 
@@ -69,6 +70,8 @@ public class Game implements Serializable {
     public void setMap(Map location) {
         this.map = location;
     }
+
+    
 
     @Override
     public int hashCode() {

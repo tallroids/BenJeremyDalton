@@ -9,9 +9,9 @@ package byui.cit260.desertEscape.view;
  *
  * @author tallroids
  */
-class DesertSceneView extends View{
+class CrevassSceneView extends View{
 
-    public DesertSceneView() {
+    public CrevassSceneView() {
         super("\n"
                 + "\n*** This view not yet developed ***"
                 
