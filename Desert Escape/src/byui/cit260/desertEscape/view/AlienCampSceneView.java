@@ -5,6 +5,7 @@
  */
 package byui.cit260.desertEscape.view;
 
+import byui.cit260.desertEscape.control.GameControl;
 import desert.escape.DesertEscape;
 
 /**
@@ -17,7 +18,8 @@ class AlienCampSceneView extends View{
         super("\n"
                 + "\n*** Alien Camp ***"
                 + "\nYou wandered into a camp of aliens, what will you do?"
-                + "\n\nR - Run!"
+                + "\n\nS - Search for items"
+                + "\nR - Run!"
                 + "\nH - Say Hello"
                 + "\nQ - Game Menu");
     }
@@ -26,8 +28,12 @@ class AlienCampSceneView extends View{
     public boolean doAction(String choice) {
         choice = choice.toUpperCase();
         switch (choice) {
+            case "S":
+                this.console.println("You carefully move through the camp, searching for something valuable.");
+                this.collectItems();
+                break;
             case "R":
-                this.console.println("Good choice, you would probably regret that");
+                this.console.println("Good choice, you would probably regret sticking around longer");
                 this.unblockAndDisplayMenu(DesertEscape.getPlayer());
                 break;
             case "H":
@@ -40,4 +46,9 @@ class AlienCampSceneView extends View{
     }
     return false;
 }
+
+    private void collectItems() {
+            GameControl.addParts(DesertEscape.getPlayer().getCurrentLocation());
+            GameControl.addRayGun();
+    }
 }

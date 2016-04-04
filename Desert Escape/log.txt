@@ -1,4 +1,0 @@
-byui.cit260.desertEscape.view.MainMenuView - 
-*** Please try again ***
-byui.cit260.desertEscape.view.CharacterStatsView - 
-*** Please try again ***

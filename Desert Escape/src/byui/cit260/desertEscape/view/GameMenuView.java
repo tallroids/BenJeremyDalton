@@ -25,6 +25,13 @@ class GameMenuView extends View {
                 + "\nI - Check Inventory"
                 + "\nS - View character stats?"
                 + "\nM - View Map"
+                + "\n-------------------------"
+                + "\n----Movement Controls----"
+                + "\n-------------------------"
+                + "\nMN - Move player North"
+                + "\nMS - Move player South"
+                + "\nME - Move player East"
+                + "\nMW - Move player West"
                 + "\nQ - Quit");
     }
 
@@ -44,6 +51,18 @@ class GameMenuView extends View {
             case "M":
                 this.displayMap();
                 break;
+            case "MN":
+                MapControl.moveNorth(DesertEscape.getPlayer());
+                break;
+            case "MS":
+                MapControl.moveSouth(DesertEscape.getPlayer());
+                break;
+            case "ME":
+                MapControl.moveEast(DesertEscape.getPlayer());
+                break;
+            case "MW":
+                MapControl.moveWest(DesertEscape.getPlayer());
+                break;    
             default:
                 ErrorView.display(this.getClass().getName(),"\n*** Please try again ***");
                 break;
@@ -127,6 +146,7 @@ class GameMenuView extends View {
 
     private void displayMap() {
         this.console.println(DesertEscape.getCurrentGame().getMap().getMapString());
+        System.out.println("");
     }
 
 }

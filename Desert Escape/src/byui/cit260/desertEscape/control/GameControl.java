@@ -64,7 +64,7 @@ public class GameControl {
 
         Map map = MapControl.createMap();
         game.setMap(map);
-        
+                 
         game.getPlayer().setCurrentLocation(map.getCurrentLocation(0,0));
         
         DesertEscape.setCurrentGame(game);
@@ -148,7 +148,6 @@ public class GameControl {
         rayGun.setItemPrice(20);
         rayGun.setAmountInInventory(0);
         inventory[InventoryItem.rayGun.ordinal()] = rayGun;
-
         return inventory;
     }
 
@@ -189,7 +188,7 @@ public class GameControl {
 
         Item[] inventory = DesertEscape.getCurrentGame().getInventory();
         double sum = 0.00;
-
+        
         DesertEscape.getOutFile().println("\nSum price of items:");
         for (Item item : inventory) {
             if (item.getAmountInInventory() > 0) {
@@ -203,4 +202,32 @@ public class GameControl {
 
     }
 
+    public static void addParts(Location currentLocation) {
+        Item[] inventory = DesertEscape.getCurrentGame().getInventory();
+        
+        if ( currentLocation.getScene().getBlocked() == true) {
+        int currentAmount = inventory[InventoryItem.timeMachineParts.ordinal()].getAmountInInventory();
+        inventory[InventoryItem.timeMachineParts.ordinal()].setAmountInInventory(currentAmount + 1);
+        System.out.println("You found a part for the time machine!");
+        }  
+    }
+    public static void addShovel() {
+          Item[] inventory = DesertEscape.getCurrentGame().getInventory();   
+        
+        int currentAmount = inventory[InventoryItem.shovel.ordinal()].getAmountInInventory();
+        inventory[InventoryItem.shovel.ordinal()].setAmountInInventory(currentAmount + 1);
+        System.out.println("You found a shovel!");
+        
+    }
+    public static void addRayGun() {
+          Item[] inventory = DesertEscape.getCurrentGame().getInventory();   
+        
+        int currentAmount = inventory[InventoryItem.rayGun.ordinal()].getAmountInInventory();
+        inventory[InventoryItem.rayGun.ordinal()].setAmountInInventory(currentAmount + 1);
+        System.out.println("You found a ray gun!");
+    }
+    
+    
+    
+    
 }
