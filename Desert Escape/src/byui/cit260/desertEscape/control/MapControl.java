@@ -22,12 +22,13 @@ public class MapControl {
     public static Map createMap() {
         Map map = new Map(3,3);   
         Scene[] scenes = createScenes();
-        GameControl.assignScenesToLocations(map, scenes);
-        DesertEscape.getCurrentGame().setScenes(scenes);
+        GameControl.assignScenesToLocations(map, scenes);        
         return map;    
     }
+    
+        
 
-    private static Scene[] createScenes() {
+private static Scene[] createScenes() {
                 
         Scene[] scenes = new Scene[SceneType.values().length];
         
@@ -109,22 +110,21 @@ public class MapControl {
     }
     
     public static void moveNorth(Player player) {
-         
+        
+        Location[][] location = DesertEscape.getCurrentGame().getMap().getLocations();
         Map map = DesertEscape.getCurrentGame().getMap();
-        Scene[] scenes = DesertEscape.getCurrentGame().getScenes();
         double currentCol = player.getCurrentLocation().getColumn();
         double currentRow = player.getCurrentLocation().getRow();
         
         
-        
-        if(currentRow == 0) {
+        if (location[0][0].getScene().getBlocked() == true) {
+            System.out.println("You must complete the prologue before moving.");        
+        }
+                else if(currentRow == 0) {
             System.out.println("You cannot go further north.");
         }
         
-        else if (scenes[SceneType.prologueScene.ordinal()].getBlocked() == true) {
-            System.out.println("You must complete the prologue before moving.");
         
-        }
         else {
         int newRow = (int) (currentRow - 1);
         int newCol = (int) currentCol;
@@ -135,20 +135,20 @@ public class MapControl {
     }
     
     public static void moveEast(Player player) {
-        Scene[] scenes = DesertEscape.getCurrentGame().getScenes();
+        Location[][] location = DesertEscape.getCurrentGame().getMap().getLocations();
         Map map = DesertEscape.getCurrentGame().getMap();
         double currentCol = player.getCurrentLocation().getColumn();
         double currentRow = player.getCurrentLocation().getRow();
         
         
-        
-        if(currentCol ==  map.getNoOfColumns() - 1) {
-            System.out.println("You cannot go further east.");
-        }
-        else if (scenes[SceneType.prologueScene.ordinal()].getBlocked() == true) {
+         if (location[0][0].getScene().getBlocked() == true) {
             System.out.println("You must complete the prologue before moving.");
         
         }
+        else if(currentCol ==  map.getNoOfColumns() - 1) {
+            System.out.println("You cannot go further east.");
+        }
+        
         else {
         int newRow = (int) currentRow;
         int newCol = (int) (currentCol + 1);
@@ -158,19 +158,19 @@ public class MapControl {
     }
     
     public static void moveSouth(Player player) {
-        Scene[] scenes = DesertEscape.getCurrentGame().getScenes();
+        Location[][] location = DesertEscape.getCurrentGame().getMap().getLocations();
         Map map = DesertEscape.getCurrentGame().getMap();
         double currentCol = player.getCurrentLocation().getColumn();
         double currentRow = player.getCurrentLocation().getRow();
         
-                
-        if(currentRow == map.getNoOfRows() - 1) {
-            System.out.println("You cannot go further south.");
-        }
-        else if (scenes[SceneType.prologueScene.ordinal()].getBlocked() == true) {
+        if (location[0][0].getScene().getBlocked() == true) {
             System.out.println("You must complete the prologue before moving.");
         
+        }        
+        else if(currentRow == map.getNoOfRows() - 1) {
+            System.out.println("You cannot go further south.");
         }
+         
         else {
         int newRow = (int) (currentRow + 1);
         int newCol = (int) currentCol;
@@ -181,33 +181,29 @@ public class MapControl {
     }
     
     public static void moveWest(Player player) {
-        Scene[] scenes = DesertEscape.getCurrentGame().getScenes();
+        Location[][] location = DesertEscape.getCurrentGame().getMap().getLocations();
         Map map = DesertEscape.getCurrentGame().getMap();
         double currentCol = player.getCurrentLocation().getColumn();
         double currentRow = player.getCurrentLocation().getRow();
         
-                
-        if(currentCol == 0) {
+        if (location[0][0].getScene().getBlocked() == true) {
+            System.out.println("You must complete the prologue before moving."); }       
+        else if(currentCol == 0) {
             System.out.println("You cannot go further west.");
         }
-        else if (scenes[SceneType.prologueScene.ordinal()].getBlocked() == true) {
-            System.out.println("You must complete the prologue before moving.");
+         
         
-        }
+        
         else {
         int newRow = (int) currentRow;
         int newCol = (int) (currentCol - 1);
         Location[][] newLocation = map.getLocations();
         player.setCurrentLocation(newLocation[newRow][newCol]);
-        System.out.println("You make your way southward");}
+        System.out.println("You make your way westward");}
         
         
     }
-    
-    
-    
-    
-    
+     
    
     
 }

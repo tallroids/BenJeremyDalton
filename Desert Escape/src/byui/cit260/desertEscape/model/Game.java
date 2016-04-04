@@ -18,19 +18,12 @@ public class Game implements Serializable {
     private Item[] inventory;
     private String[] characters;
     private Map map;
-    private Scene[] scenes;
+    
     
     public Game() {
     }
 
-    public Scene[] getScenes() {
-        return scenes;
-    }
-
-    public void setScenes(Scene[] scenes) {
-        this.scenes = scenes;
-    }
-
+    
     public Player getPlayer() {
         return player;
     }

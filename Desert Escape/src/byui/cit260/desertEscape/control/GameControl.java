@@ -58,7 +58,9 @@ public class GameControl {
         
         Item[] inventoryList = GameControl.createInventoryList();
         game.setInventory(inventoryList);
-
+        
+       
+        
         TimeMachine timeMachine = new TimeMachine();
         game.setTimeMachine(timeMachine);
 
@@ -209,7 +211,12 @@ public class GameControl {
         int currentAmount = inventory[InventoryItem.timeMachineParts.ordinal()].getAmountInInventory();
         inventory[InventoryItem.timeMachineParts.ordinal()].setAmountInInventory(currentAmount + 1);
         System.out.println("You found a part for the time machine!");
-        }  
+        } 
+        else {
+        System.out.println("Hmmm, no more time machine parts over here.");
+        }
+        
+        
     }
     public static void addShovel() {
           Item[] inventory = DesertEscape.getCurrentGame().getInventory();   

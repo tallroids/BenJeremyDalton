@@ -7,6 +7,9 @@ package byui.cit260.desertEscape.view;
 
 import byui.cit260.desertEscape.control.GameControl;
 import byui.cit260.desertEscape.control.MapControl;
+import byui.cit260.desertEscape.model.Game;
+import byui.cit260.desertEscape.model.Map;
+import byui.cit260.desertEscape.model.Location;
 import byui.cit260.desertEscape.model.Item;
 import byui.cit260.desertEscape.model.Scene;
 import desert.escape.DesertEscape;
@@ -50,18 +53,19 @@ class GameMenuView extends View {
                 break;
             case "M":
                 this.displayMap();
+                this.displayPlayerLocation();
                 break;
             case "MN":
-                MapControl.moveNorth(DesertEscape.getPlayer());
+                MapControl.moveNorth(DesertEscape.getCurrentGame().getPlayer());
                 break;
             case "MS":
-                MapControl.moveSouth(DesertEscape.getPlayer());
+                MapControl.moveSouth(DesertEscape.getCurrentGame().getPlayer());
                 break;
             case "ME":
-                MapControl.moveEast(DesertEscape.getPlayer());
+                MapControl.moveEast(DesertEscape.getCurrentGame().getPlayer());
                 break;
             case "MW":
-                MapControl.moveWest(DesertEscape.getPlayer());
+                MapControl.moveWest(DesertEscape.getCurrentGame().getPlayer());
                 break;    
             default:
                 ErrorView.display(this.getClass().getName(),"\n*** Please try again ***");
@@ -147,6 +151,15 @@ class GameMenuView extends View {
     private void displayMap() {
         this.console.println(DesertEscape.getCurrentGame().getMap().getMapString());
         System.out.println("");
+    }
+    
+    private void displayPlayerLocation() {
+        
+        Location currentLocation = DesertEscape.getCurrentGame().getPlayer().getCurrentLocation();
+        String locationName = DesertEscape.getCurrentGame().getPlayer().getCurrentLocation().getScene().getDescrption();
+        this.console.println("\n*** Player's location: " + currentLocation
+                        + "\nDescription: " + locationName );
+        
     }
 
 }
